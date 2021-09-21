@@ -1,0 +1,24 @@
+mysql:
+  #数据库ip地址
+  host:
+  #数据库端口
+  port:
+  #用户名
+  user:
+  #密码
+  passwd:
+  #数据库库名
+  database:
+
+redis:
+  #redis地址
+  host:
+  #redis端口
+  port:
+  #密码，没有则留空
+  password:
+  #数据库编号
+  db: 
+
+#加密密钥，请务必保管好
+secret:

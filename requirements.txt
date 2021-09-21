@@ -1,0 +1,6 @@
+fastapi==0.68.1
+pymysql==1.0.2
+PyYAML==5.4.1
+redis==3.5.3
+uvicorn==0.15.0
+python-multipart==0.0.5

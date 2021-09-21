@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/mdui@1.0.1/dist/css/mdui.min.css" />
+	<script src="https://cdn.jsdelivr.net/npm/mdui@1.0.1/dist/js/mdui.min.js"></script>
+	<script src="https://cdn.jsdelivr.net/npm/jquery@1.11.1/dist/jquery.min.js"></script>
+	<script src="https://cdn.jsdelivr.net/gh/jquery-form/form@4.2.2/dist/jquery.form.min.js"></script>
+	<title>R-SSO | 登录 Login</title>
+	<style>
+		.wrap {
+			position: fixed;
+			top: 0;
+			right: 0;
+			height: 100%;
+			background: rgba(0, 0, 0, .6);
+		}
+
+		.wrap .inner {
+			position: absolute;
+			left: 0;
+			right: 0;
+			top: 0;
+			bottom: 0;
+			z-index: -1;
+		}
+
+		.notice {
+			position: absolute;
+			bottom: 5%;
+			margin: auto;
+			left: 0;
+			right: 0;
+			text-align: center;
+			color: white;
+			background: rgba(255, 255, 255, 0.3);
+		}
+	</style>
+</head>
+
+<body style="background-image: url(https://api.ravi.cool/random);background-size: cover;">
+	<div style="background: rgb(255 255 255 / 30%);height: 100%;width: 100%;position: absolute;">
+		<div class="wrap mdui-col-xs-9 mdui-col-sm-5">
+			<div class="inner">
+				<h1 style="text-align: center;color: white;top: 15%;position: relative;">R-SSO | 注册</h1>
+				<form style="left: 10%;right: 10%;position: absolute;top: 25%;" onsubmit="return false;" id="form">
+					<div class="mdui-textfield mdui-textfield-floating-label">
+						<i class="mdui-icon material-icons" style="color: white;">account_circle</i>
+						<label class="mdui-textfield-label" style="color: white;">用户名</label>
+						<input class="mdui-textfield-input" style="color: white;" type="text" name="user" />
+					</div>
+					<div class="mdui-textfield mdui-textfield-floating-label">
+						<i class="mdui-icon material-icons" style="color: white;">lock</i>
+						<label class="mdui-textfield-label" style="color: white;">密码</label>
+						<input class="mdui-textfield-input" style="color: white;" type="password" name="password" />
+					</div>
+                    <div class="mdui-textfield mdui-textfield-floating-label">
+						<i class="mdui-icon material-icons" style="color: white;">email</i>
+						<label class="mdui-textfield-label" style="color: white;">邮箱</label>
+						<input class="mdui-textfield-input" style="color: white;" type="password" name="email" />
+					</div>
+                    <div class="mdui-textfield mdui-textfield-floating-label">
+						<i class="mdui-icon material-icons" style="color: white;">lock</i>
+						<label class="mdui-textfield-label" style="color: white;">验证码</label>
+						<input class="mdui-textfield-input" style="color: white;" type="text" name="" />
+					</div>
+                    <button class="mdui-btn mdui-btn-raised mdui-ripple mdui-color-pink" style="width: 100%;">发送</button>
+					<br><br>
+					<button class="mdui-btn mdui-btn-raised mdui-ripple mdui-color-blue"
+						style="left: 0;right:0;position: absolute;margin: auto;width: 20%;height: 13%;font-size: larger;" type="button"
+						onclick="reg()">注册</button>
+				</form>
+				<div class="notice">
+					<p>已有账号? <a href="./login.html"><button
+								class="mdui-btn mdui-btn-raised mdui-ripple mdui-color-grey">点击登录</button></a></p>
+					<p>忘记密码? <a href="./reset.html"><button
+								class="mdui-btn mdui-btn-raised mdui-ripple mdui-color-grey">点击找回</button></a></p>
+				</div>
+			</div>
+		</div>
+	</div>
+	<script type="text/javascript">
+		function reg() {
+			$.ajax({
+				type: "POST",
+				dataType: "json",
+				url: "http://127.0.0.1:8000/api/register",
+				data: $('#form').serialize(),
+				success: function (result) {
+					if (result.status == 200) {
+                        alert("注册成功")
+						location.href = "./login.html";
+					}
+					;
+				},
+				error: function () {
+					alert("异常！");
+				}
+			});
+		}
+	</script>
+</body>
+
+</html>
